@@ -62,33 +62,33 @@ def mn_status_bad():
 
 
 def test_valid_dash_address():
-    from dashlib import is_valid_dash_address
+    from coinlib import is_valid_coin_address
 
     main = valid_dash_address()
     test = valid_dash_address('testnet')
 
-    assert is_valid_dash_address(main) is True
-    assert is_valid_dash_address(main, 'mainnet') is True
-    assert is_valid_dash_address(main, 'testnet') is False
+    assert is_valid_coin_address(main) is True
+    assert is_valid_coin_address(main, 'mainnet') is True
+    assert is_valid_coin_address(main, 'testnet') is False
 
-    assert is_valid_dash_address(test) is False
-    assert is_valid_dash_address(test, 'mainnet') is False
-    assert is_valid_dash_address(test, 'testnet') is True
+    assert is_valid_coin_address(test) is False
+    assert is_valid_coin_address(test, 'mainnet') is False
+    assert is_valid_coin_address(test, 'testnet') is True
 
 
 def test_invalid_dash_address():
-    from dashlib import is_valid_dash_address
+    from coinlib import is_valid_coin_address
 
     main = invalid_dash_address()
     test = invalid_dash_address('testnet')
 
-    assert is_valid_dash_address(main) is False
-    assert is_valid_dash_address(main, 'mainnet') is False
-    assert is_valid_dash_address(main, 'testnet') is False
+    assert is_valid_coin_address(main) is False
+    assert is_valid_coin_address(main, 'mainnet') is False
+    assert is_valid_coin_address(main, 'testnet') is False
 
-    assert is_valid_dash_address(test) is False
-    assert is_valid_dash_address(test, 'mainnet') is False
-    assert is_valid_dash_address(test, 'testnet') is False
+    assert is_valid_coin_address(test) is False
+    assert is_valid_coin_address(test, 'mainnet') is False
+    assert is_valid_coin_address(test, 'testnet') is False
 
 
 def test_deterministic_masternode_elections(current_block_hash, mn_list):
@@ -100,7 +100,7 @@ def test_deterministic_masternode_elections(current_block_hash, mn_list):
 
 
 def test_deterministic_masternode_elections(current_block_hash, mn_list):
-    from dashlib import elect_mn
+    from coinlib import elect_mn
 
     winner = elect_mn(block_hash=current_block_hash, mnlist=mn_list)
     assert winner == 'f68a2e5d64f4a9be7ff8d0fbd9059dcd3ce98ad7a19a9260d1d6709127ffac56-1'
@@ -110,7 +110,7 @@ def test_deterministic_masternode_elections(current_block_hash, mn_list):
 
 
 def test_parse_masternode_status_vin():
-    from dashlib import parse_masternode_status_vin
+    from coinlib import parse_masternode_status_vin
     status = mn_status_good()
     vin = parse_masternode_status_vin(status['vin'])
     assert vin == 'f68a2e5d64f4a9be7ff8d0fbd9059dcd3ce98ad7a19a9260d1d6709127ffac56-1'
@@ -121,9 +121,9 @@ def test_parse_masternode_status_vin():
 
 
 def test_hash_function():
-    import dashlib
+    import coinlib
     sb_data_hex = '5b227375706572626c6f636b222c207b226576656e745f626c6f636b5f686569676874223a2037323639362c20227061796d656e745f616464726573736573223a2022795965384b77796155753559737753596d42337133727978385854557539793755697c795965384b77796155753559737753596d4233713372797838585455753979375569222c20227061796d656e745f616d6f756e7473223a202232352e37353030303030307c32352e3735303030303030227d5d'
     sb_hash = '5c7c28ddec8c1ad54b49f6f1e79369e7ccaf76f5ddc30e502569d674e458ccf3'
 
-    hex_hash = "%x" % dashlib.hashit(sb_data_hex)
+    hex_hash = "%x" % coinlib.hashit(sb_data_hex)
     assert hex_hash == sb_hash

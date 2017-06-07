@@ -1,2 +1,2 @@
-# run Dash-Sentinel every two minutes
-*/2 * * * * cd /home/YOURUSERNAME/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1
+# run MUE-Sentinel every two minutes
+*/2 * * * * cd /home/root/sentinel && ./sentinel1/bin/python bin/sentinel.py >/dev/null 2>&1

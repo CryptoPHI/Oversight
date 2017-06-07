@@ -1,5 +1,7 @@
+from __future__ import print_function
+
 """
-dashd JSONRPC interface
+coind JSONRPC interface
 """
 import sys
 import os
@@ -13,7 +15,7 @@ from decimal import Decimal
 import time
 
 
-class DashDaemon():
+class CoinDaemon():
     def __init__(self, **kwargs):
         host = kwargs.get('host', '127.0.0.1')
         user = kwargs.get('user')
@@ -22,7 +24,7 @@ class DashDaemon():
 
         self.creds = (user, password, host, port)
 
-        # memoize calls to some dashd methods
+        # memoize calls to some coind methods
         self.governance_info = None
         self.gobject_votes = {}
 
@@ -31,10 +33,10 @@ class DashDaemon():
         return AuthServiceProxy("http://{0}:{1}@{2}:{3}".format(*self.creds))
 
     @classmethod
-    def from_dash_conf(self, dash_dot_conf):
-        from dash_config import DashConfig
-        config_text = DashConfig.slurp_config_file(dash_dot_conf)
-        creds = DashConfig.get_rpc_creds(config_text, config.network)
+    def from_coin_conf(self, coin_dot_conf):
+        from ccoin_config import CoinConfig
+        config_text = CoinConfig.slurp_config_file(coin_dot_conf)
+        creds = CoinConfig.get_rpc_creds(config_text, config.network)
 
         return self(**creds)
 
@@ -57,7 +59,7 @@ class DashDaemon():
         return golist
 
     def get_current_masternode_vin(self):
-        from dashlib import parse_masternode_status_vin
+        from coinlib import parse_masternode_status_vin
 
         my_vin = None
 
@@ -141,7 +143,7 @@ class DashDaemon():
     # "my" votes refers to the current running masternode
     # memoized on a per-run, per-object_hash basis
     def get_my_gobject_votes(self, object_hash):
-        import dashlib
+        import coinlib
         if not self.gobject_votes.get(object_hash):
             my_vin = self.get_current_masternode_vin()
             # if we can't get MN vin from output of `masternode status`,
@@ -153,7 +155,7 @@ class DashDaemon():
 
             cmd = ['gobject', 'getcurrentvotes', object_hash, txid, vout_index]
             raw_votes = self.rpc_command(*cmd)
-            self.gobject_votes[object_hash] = dashlib.parse_raw_votes(raw_votes)
+            self.gobject_votes[object_hash] = coinlib.parse_raw_votes(raw_votes)
 
         return self.gobject_votes[object_hash]
 
@@ -169,19 +171,19 @@ class DashDaemon():
         current_height = self.rpc_command('getblockcount')
         event_block_height = self.next_superblock_height()
 
-        # print "current_height = %d" % current_height
-        # print "event_block_height = %d" % event_block_height
-        # print "maturity_phase_delta = %d" % maturity_phase_delta
-        # print "maturity_phase_start_block = %d" % maturity_phase_start_block
+        print("current_height = %d" % current_height)
+        print("event_block_height = %d" % event_block_height)
+        print("maturity_phase_delta = %d" % maturity_phase_delta)
+        print("maturity_phase_start_block = %d" % maturity_phase_start_block)
 
         return (current_height >= maturity_phase_start_block)
 
     def we_are_the_winner(self):
-        import dashlib
+        import coinlib
         # find the elected MN vin for superblock creation...
         current_block_hash = self.current_block_hash()
         mn_list = self.get_masternodes()
-        winner = dashlib.elect_mn(block_hash=current_block_hash, mnlist=mn_list)
+        winner = coinlib.elect_mn(block_hash=current_block_hash, mnlist=mn_list)
         my_vin = self.get_current_masternode_vin()
 
         # print "current_block_hash: [%s]" % current_block_hash

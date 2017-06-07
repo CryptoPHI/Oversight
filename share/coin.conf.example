@@ -1,0 +1,21 @@
+# Base
+server=1
+listen=1
+daemon=1
+
+# Access
+rpcuser=[rpc_user]
+rpcpassword=[rpc_pass]
+rpcallow=127.0.0.1
+rpcport=[rpc_port]
+
+# Indexs
+txindex=1
+logtimestamps=1
+addressindex=1
+timestampindex=1
+spentindex=1
+
+# Seeding
+seednode=mn.cryptophi.com
+addnode=mn.cryptophi.com
