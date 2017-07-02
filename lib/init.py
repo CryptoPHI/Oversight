@@ -43,7 +43,7 @@ def is_database_correctly_configured():
 
     configured = False
 
-    cannot_connect_message = "Cannot connect to database. Please ensure database service is running and user access is properly configured in 'sentinel.conf'."
+    cannot_connect_message = "Cannot connect to database. Please ensure database service is running and user access is properly configured in 'oversight.conf'."
 
     try:
         db = config.db

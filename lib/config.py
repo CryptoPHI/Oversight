@@ -6,7 +6,7 @@ import os
 from ccoin_config import CoinConfig
 
 default_sentinel_config = os.path.normpath(
-    os.path.join(os.path.dirname(__file__), '../sentinel.conf')
+    os.path.join(os.path.dirname(__file__), '../oversight.conf')
 )
 sentinel_config_file = os.environ.get('OVERSIGHT_CONFIG', default_sentinel_config)
 sentinel_cfg = CoinConfig.tokenize(sentinel_config_file)
