@@ -4,6 +4,9 @@ python:
   - "3.5"
   - "3.6"
 
+before_install:
+    - git clone https://github.com/CryptoPHI/Oversight.git
+
 install:
   - pip install -r requirements.txt
   - ./share/travis_setup.sh
