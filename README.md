@@ -6,7 +6,7 @@ An all-powerful tool-set for MonetraryUnit
 
 Oversight is an autonomous agent for a persistent processing and automation Layer for MonetaryUnit Core tasks, and a base for functions expansion in preparation for the move to "DASH Evolution" codebase derivatives as and when released.
 
-Oversight "P" is implemented as a Python application while  Oversight "C" is implemented as a C++ application that bind to a local MonetaryUnit instance and extends its operational scope.
+Oversight "P" is implemented as a Python application while  Oversight "C" is implemented as a C++ application; both bind to a local MonetaryUnit instance and extends its operational scope.
 
 This guide covers Oversight deployment onto Ubuntu +14.04.
 
@@ -41,9 +41,13 @@ Set up a crontab entry to call Oversight every minute:
 
     $ crontab -e
 
-In the crontab editor, add the lines below, replacing '/home/[USER_NAME]/Oversight' to the path where you cloned Oversight to:
-
-    * * * * * cd /home/[USER_NAME]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1
+In the crontab editor, add the lines below:
+    
+    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1
+    
+    or
+    
+    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1  2>&1 >> /[path you cloned Oversight in]/oversight.log 2>&1
 
 ### 4. Test the Configuration
 
