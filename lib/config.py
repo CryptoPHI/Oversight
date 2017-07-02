@@ -8,7 +8,7 @@ from ccoin_config import CoinConfig
 default_sentinel_config = os.path.normpath(
     os.path.join(os.path.dirname(__file__), '../sentinel.conf')
 )
-sentinel_config_file = os.environ.get('SENTINEL_CONFIG', default_sentinel_config)
+sentinel_config_file = os.environ.get('OVERSIGHT_CONFIG', default_sentinel_config)
 sentinel_cfg = CoinConfig.tokenize(sentinel_config_file)
 
 
@@ -36,7 +36,7 @@ def sqlite_test_db_name(sqlite_file_path):
 
 def get_db_conn():
     import peewee
-    env = os.environ.get('SENTINEL_ENV', 'production')
+    env = os.environ.get('OVERSIGHT_ENV', 'production')
 
     # default values should be used unless you need a different config for development
     db_host = sentinel_cfg.get('db_host', '127.0.0.1')

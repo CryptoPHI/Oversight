@@ -2,8 +2,8 @@ import pytest
 import sys
 import os
 import time
-os.environ['SENTINEL_ENV'] = 'test'
-os.environ['SENTINEL_CONFIG'] = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../test_sentinel.conf'))
+os.environ['OVERSIGHT_ENV'] = 'test'
+os.environ['OVERSIGHT_CONFIG'] = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../test_oversight.conf'))
 sys.path.append(os.path.normpath(os.path.join(os.path.dirname(__file__), '../../../lib')))
 import misc
 import config

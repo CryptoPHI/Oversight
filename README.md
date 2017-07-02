@@ -4,10 +4,9 @@ An all-powerful tool-set for MonetraryUnit
 
 [![Build Status](https://travis-ci.org/CryptoPHI/Oversight.svg?branch=master)](https://travis-ci.org/CryptoPHI/Oversight)
 
-Oversight is an autonomous agent for a persistent processing and automation Layer for MonetaryUnit Core tasks, and a base for functions expansion in preparation for the move to "DASH Evolution" codebase derivatives upon release.
+Oversight is an autonomous agent for a persistent processing and automation Layer for MonetaryUnit Core tasks, and a base for functions expansion in preparation for the move to "DASH Evolution" codebase derivatives as and when released.
 
-Oversight "P" is implemented as a Python application that binds to a local MonetaryUnit instance.
-Oversight "C" is implemented as a C++ application that binds to a local MonetaryUnit instance.
+Oversight "P" is implemented as a Python application while  Oversight "C" is implemented as a C++ application that bind to a local MonetaryUnit instance and extends its operational scope.
 
 This guide covers Oversight deployment onto Ubuntu +14.04.
 
@@ -28,7 +27,7 @@ Make sure the local MonetaryUnit daemon running is of suitable version:
 
     $ mue-cli getinfo | grep version
 
-### 2. Install Oversight "P"
+### 2.a Install Oversight "P"
 
 Clone the Oversight repo and install Python dependencies.
 

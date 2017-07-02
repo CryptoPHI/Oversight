@@ -4,8 +4,8 @@ listen=1
 daemon=1
 
 # Access
-rpcuser=[rpc_user]
-rpcpassword=[rpc_pass]
+rpcuser=RPC_USER
+rpcpassword=RPC_PASS
 rpcallow=127.0.0.1
 rpcport=29683
 
