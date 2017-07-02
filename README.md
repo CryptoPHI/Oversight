@@ -45,9 +45,13 @@ In the crontab editor, add the lines below:
     
     * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1
     
-    or
+  or: with logging as a basic user
     
-    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1  2>&1 >> /[path you cloned Oversight in]/oversight.log 2>&1
+    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1  2>&1 >> /[path to user home]/oversight.log 2>&1
+    
+  or: with logging as root
+    
+    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1  2>&1 >> /var/log/oversight.log 2>&1
 
 ### 4. Test the Configuration
 
