@@ -7,7 +7,7 @@ daemon=1
 rpcuser=[rpc_user]
 rpcpassword=[rpc_pass]
 rpcallow=127.0.0.1
-rpcport=[rpc_port]
+rpcport=29683
 
 # Indexs
 txindex=1
