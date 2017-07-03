@@ -2,12 +2,14 @@
 server=1
 listen=1
 daemon=1
+testnet=1
 
 # Access
 rpcuser=OVSD
 rpcpassword=OVSD7oJSQUHt
 rpcallow=127.0.0.1
-rpcport=29683
+#rpcport=29683
+rpcport=28683
 
 # Indexs
 txindex=1

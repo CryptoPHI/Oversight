@@ -2,6 +2,7 @@ import pytest
 import os
 import sys
 import re
+
 os.environ['OVERSIGHT_CONFIG'] = os.path.normpath(os.path.join(os.path.dirname(__file__), '../test_oversight.conf'))
 os.environ['OVERSIGHT_ENV'] = 'test'
 sys.path.append(os.path.normpath(os.path.join(os.path.dirname(__file__), '../../lib')))
@@ -24,10 +25,10 @@ def coin_conf(**kwargs):
     conf = """# basic settings
 testnet=1 # TESTNET
 server=1
-rpcuser=OVSD
-rpcpassword=OVSD7oJSQUHt
+rpcuser={rpcuser}
+rpcpassword={rpcpassword}
 rpcallowip=127.0.0.1
-rpcport=28683
+rpcport={rpcport}
 """.format(**defaults)
 
     return conf
