@@ -43,15 +43,15 @@ Set up a crontab entry to call Oversight every minute:
 
 In the crontab editor, add the lines below:
     
-    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1
+    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/oversight.py >/dev/null 2>&1
     
   or: with logging as a basic user
     
-    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1  2>&1 >> /[path to user home]/oversight.log 2>&1
+    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/oversight.py >/dev/null 2>&1  2>&1 >> /[path to user home]/oversight.log 2>&1
     
   or: with logging as root
     
-    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/Oversight.py >/dev/null 2>&1  2>&1 >> /var/log/oversight.log 2>&1
+    * * * * * cd /[path you cloned Oversight in]/Oversight && ./OversightP/bin/python bin/oversight.py >/dev/null 2>&1  2>&1 >> /var/log/oversight.log 2>&1
 
 ### 4. Test the Configuration
 
@@ -71,7 +71,7 @@ An alternative (non-default) path to the `mue.conf` file can be specified in `Ov
 
 To view debug output, set the `Oversight_DEBUG` environment variable to anything non-zero, then run the script manually:
 
-    $ Oversight_DEBUG=1 ./OversightP/bin/python bin/Oversight.py
+    $ Oversight_DEBUG=1 ./OversightP/bin/python bin/oversight.py
 
 ### License
 
