@@ -1,31 +1,31 @@
 """
-    Set up defaults and read sentinel.conf
+    Set up defaults and read oversight.conf
 """
 import sys
 import os
 from ccoin_config import CoinConfig
 
-default_sentinel_config = os.path.normpath(
+default_oversight_config = os.path.normpath(
     os.path.join(os.path.dirname(__file__), '../oversight.conf')
 )
-sentinel_config_file = os.environ.get('OVERSIGHT_CONFIG', default_sentinel_config)
-sentinel_cfg = CoinConfig.tokenize(sentinel_config_file)
+oversight_config_file = os.environ.get('OVERSIGHT_CONFIG', default_oversight_config)
+oversight_cfg = CoinConfig.tokenize(oversight_config_file)
 
 
-def get_dash_conf():
+def get_coin_conf():
     home = os.environ.get('HOME')
 
     coin_conf = os.path.join(home, ".muecore/mue.conf")
     if sys.platform == 'darwin':
         coin_conf = os.path.join(home, "Library/Application Support/MueCore/mue.conf")
 
-    coin_conf = sentinel_cfg.get('coin_conf', coin_conf)
+    coin_conf = oversight_cfg.get('coin_conf', coin_conf)
 
     return coin_conf
 
 
 def get_network():
-    return sentinel_cfg.get('network', 'mainnet')
+    return oversight_cfg.get('network', 'mainnet')
 
 
 def sqlite_test_db_name(sqlite_file_path):
@@ -39,13 +39,13 @@ def get_db_conn():
     env = os.environ.get('OVERSIGHT_ENV', 'production')
 
     # default values should be used unless you need a different config for development
-    db_host = sentinel_cfg.get('db_host', '127.0.0.1')
-    db_port = sentinel_cfg.get('db_port', None)
-    db_name = sentinel_cfg.get('db_name', 'sentinel')
-    db_user = sentinel_cfg.get('db_user', 'sentinel')
-    db_password = sentinel_cfg.get('db_password', 'sentinel')
-    db_charset = sentinel_cfg.get('db_charset', 'utf8mb4')
-    db_driver = sentinel_cfg.get('db_driver', 'sqlite')
+    db_host = oversight_cfg.get('db_host', '127.0.0.1')
+    db_port = oversight_cfg.get('db_port', None)
+    db_name = oversight_cfg.get('db_name', 'oversight')
+    db_user = oversight_cfg.get('db_user', 'oversight')
+    db_password = oversight_cfg.get('db_password', 'oversight')
+    db_charset = oversight_cfg.get('db_charset', 'utf8mb4')
+    db_driver = oversight_cfg.get('db_driver', 'sqlite')
 
     if (env == 'test'):
         if db_driver == 'sqlite':
@@ -77,6 +77,6 @@ def get_db_conn():
     return db
 
 
-coin_conf = get_dash_conf()
+coin_conf = get_coin_conf()
 network = get_network()
 db = get_db_conn()

@@ -239,7 +239,7 @@ def serialise(dikt):
 def did_we_vote(output):
     from bitcoinrpc.authproxy import JSONRPCException
 
-    # sentinel
+    # oversight
     voted = False
     err_msg = ''
 

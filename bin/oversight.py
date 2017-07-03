@@ -161,7 +161,7 @@ def main():
         return
 
     # register a handler if SENTINEL_DEBUG is set
-    if os.environ.get('SENTINEL_DEBUG', None):
+    if os.environ.get('OVERSIGHT_DEBUG', None):
         import logging
         logger = logging.getLogger('peewee')
         logger.setLevel(logging.DEBUG)

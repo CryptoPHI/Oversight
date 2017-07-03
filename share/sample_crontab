@@ -1,2 +1,2 @@
 # run MUE-Oversight every minute
-* * * * * cd /home/root/sentinel && ./sentinel1/bin/python bin/sentinel.py >/dev/null 2>&1
+* * * * * cd /home/root/Oversight && ./oversightP/bin/python bin/oversight.py >/dev/null 2>&1

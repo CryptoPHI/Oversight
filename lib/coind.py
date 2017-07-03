@@ -161,9 +161,9 @@ class CoinDaemon():
 
     def is_govobj_maturity_phase(self):
         # 3-day period for govobj maturity
-        maturity_phase_delta = 1662      # ~(60*24*3)/2.6
+        maturity_phase_delta = 6480      # mainnet blocks
         if config.network == 'testnet':
-            maturity_phase_delta = 24    # testnet
+            maturity_phase_delta = 24    # testnet blocks
 
         event_block_height = self.next_superblock_height()
         maturity_phase_start_block = event_block_height - maturity_phase_delta
@@ -186,9 +186,9 @@ class CoinDaemon():
         winner = coinlib.elect_mn(block_hash=current_block_hash, mnlist=mn_list)
         my_vin = self.get_current_masternode_vin()
 
-        # print "current_block_hash: [%s]" % current_block_hash
-        # print "MN election winner: [%s]" % winner
-        # print "current masternode VIN: [%s]" % my_vin
+        print("current_block_hash: [%s]" % current_block_hash)
+        print("MN election winner: [%s]" % winner)
+        print("current masternode VIN: [%s]" % my_vin)
 
         return (winner == my_vin)
 
@@ -214,7 +214,7 @@ class CoinDaemon():
         if (diff < 0):
             raise Exception("Oh Noes.")
 
-        future_minutes = 2.62 * diff
+        future_minutes = 0.7 * diff
         future_seconds = 60 * future_minutes
         estimated_epoch = int(time.time() + future_seconds)
 

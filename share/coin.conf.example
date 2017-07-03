@@ -4,8 +4,8 @@ listen=1
 daemon=1
 
 # Access
-rpcuser=RPC_USER
-rpcpassword=RPC_PASS
+rpcuser=OVSD
+rpcpassword=OVSD7oJSQUHt
 rpcallow=127.0.0.1
 rpcport=29683
 

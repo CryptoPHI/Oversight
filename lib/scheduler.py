@@ -10,7 +10,7 @@ import random
 
 
 class Scheduler(object):
-    transient_key_scheduled = 'NEXT_SENTINEL_CHECK_AT'
+    transient_key_scheduled = 'NEXT_OVERSIGHT_CHECK_AT'
     random_interval_max = 1800
 
     @classmethod
@@ -33,18 +33,18 @@ class Scheduler(object):
             random_interval = self.random_interval_max
 
         next_run_at = misc.now() + random.randint(1, random_interval)
-        printdbg("scheduling next sentinel run for %d" % next_run_at)
+        printdbg("scheduling next oversight run for %d" % next_run_at)
         Transient.set(self.transient_key_scheduled, next_run_at,
                       next_run_at)
 
     @classmethod
     def delay(self, delay_in_seconds=None):
         if not delay_in_seconds:
-            delay_in_seconds = random.randint(0, 60)
+            delay_in_seconds = random.randint(0, 40)
 
-        # do not delay longer than 60 seconds
-        # in case an int > 60 given as argument
-        delay_in_seconds = delay_in_seconds % 60
+        # do not delay longer than 40 seconds
+        # in case an int > 40 given as argument
+        delay_in_seconds = delay_in_seconds % 40
 
         printdbg("Delay of [%d] seconds for cron minute offset" % delay_in_seconds)
         time.sleep(delay_in_seconds)

@@ -34,7 +34,7 @@ class CoinConfig():
         creds = {key: value for (key, value) in match}
 
         # standard Coin defaults...
-        default_port = 29988 if (network == 'mainnet') else 39948
+        default_port = 19683 if (network == 'mainnet') else 18683
 
         # use default port for network if not specified in coin.conf
         if not ('port' in creds):

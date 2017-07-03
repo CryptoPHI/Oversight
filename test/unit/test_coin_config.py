@@ -12,9 +12,9 @@ from ccoin_config import CoinConfig
 @pytest.fixture
 def coin_conf(**kwargs):
     defaults = {
-        'rpcuser': 'ZEUS',
-        'rpcpassword': '7oJSQUHtGgraD7tzB9bwSR2PKpNiz3dAnh',
-        'rpcport': 39947,
+        'rpcuser': 'OVSD',
+        'rpcpassword': 'OVSD7oJSQUHt',
+        'rpcport': 29683,
     }
 
     # merge kwargs into defaults
@@ -39,30 +39,26 @@ def test_get_rpc_creds():
 
     for key in ('user', 'password', 'port'):
         assert key in creds
-    assert creds.get('user') == 'ZEUS'
-    assert creds.get('password') == '7oJSQUHtGgraD7tzB9bwSR2PKpNiz3dAnh'
-    assert creds.get('port') == 39947
+    assert creds.get('user') == 'OVSD'
+    assert creds.get('password') == 'OVSD7oJSQUHt'
+    assert creds.get('port') == 28683
 
-    coind_config = coin_conf(rpcpassword='s00pers33kr1t', rpcport=8000)
+    coind_config = coin_conf(rpcpassword='OVSD7oJSQUHt', rpcport=28683)
     creds = CoinConfig.get_rpc_creds(coind_config, 'testnet')
 
     for key in ('user', 'password', 'port'):
         assert key in creds
-    assert creds.get('user') == 'ZEUS'
-    assert creds.get('password') == 's00pers33kr1t'
-    assert creds.get('port') == 8000
+    assert creds.get('user') == 'OVSD'
+    assert creds.get('password') == 'OVSD7oJSQUHt'
+    assert creds.get('port') == 28683
 
     no_port_specified = re.sub('\nrpcport=.*?\n', '\n', coin_conf(), re.M)
     creds = CoinConfig.get_rpc_creds(no_port_specified, 'testnet')
 
     for key in ('user', 'password', 'port'):
         assert key in creds
-    assert creds.get('user') == 'ZEUS'
-    assert creds.get('password') == '7oJSQUHtGgraD7tzB9bwSR2PKpNiz3dAnh'
-    assert creds.get('port') == 39948
+    assert creds.get('user') == 'OVSD'
+    assert creds.get('password') == 'OVSD7oJSQUHt'
+    assert creds.get('port') == 28683
 
-
-# ensure dash network (mainnet, testnet) matches that specified in config
-# requires running coind on whatever port specified...
-#
 # This is more of a coind/jsonrpc test than a config test...
