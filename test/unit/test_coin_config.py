@@ -15,7 +15,7 @@ def coin_conf(**kwargs):
     defaults = {
         'rpcuser': 'OVSD',
         'rpcpassword': 'OVSD7oJSQUHt',
-        'rpcport': 28683,
+        'rpcport': 29683,
     }
 
     # merge kwargs into defaults
