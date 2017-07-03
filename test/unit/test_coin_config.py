@@ -24,10 +24,10 @@ def coin_conf(**kwargs):
     conf = """# basic settings
 testnet=1 # TESTNET
 server=1
-rpcuser={rpcuser}
-rpcpassword={rpcpassword}
+rpcuser=OVSD
+rpcpassword=OVSD7oJSQUHt
 rpcallowip=127.0.0.1
-rpcport={rpcport}
+rpcport=28683
 """.format(**defaults)
 
     return conf
