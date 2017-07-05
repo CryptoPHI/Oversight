@@ -560,7 +560,7 @@ class Watchdog(BaseModel, GovernanceClass):
     def active(self, coind):
         now = int(time.time())
         resultset = self.select().where(
-            self.created_at >= (now - coind.SENTINEL_WATCHDOG_MAX_SECONDS)
+            self.created_at >= (now - coind.OVERSIGHT_WATCHDOG_MAX_SECONDS)
         )
         return resultset
 
@@ -568,13 +568,13 @@ class Watchdog(BaseModel, GovernanceClass):
     def expired(self, coind):
         now = int(time.time())
         resultset = self.select().where(
-            self.created_at < (now - coind.SENTINEL_WATCHDOG_MAX_SECONDS)
+            self.created_at < (now - coind.OVERSIGHT_WATCHDOG_MAX_SECONDS)
         )
         return resultset
 
     def is_expired(self, coind):
         now = int(time.time())
-        return (self.created_at < (now - coind.SENTINEL_WATCHDOG_MAX_SECONDS))
+        return (self.created_at < (now - coind.OVERSIGHT_WATCHDOG_MAX_SECONDS))
 
     def is_valid(self, coind):
         if self.is_expired(coind):
@@ -691,7 +691,7 @@ def load_db_seeds():
 
 
 def db_models():
-    """ Return a list of Sentinel DB models. """
+    """ Return a list of Oversight DB models. """
     models = [
         GovernanceObject,
         Setting,

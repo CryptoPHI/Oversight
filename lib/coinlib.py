@@ -19,7 +19,7 @@ def is_valid_coin_address(address, network='mainnet'):
     # 4 checksum bytes are appended so the total number of
     # base58 encoded bytes should be 25.  This means the number of characters
     # in the encoding should be about 34 ( 25 * log2( 256 ) / log2( 58 ) ).
-    coin_version = 140 if network == 'testnet' else 76
+    coin_version = 38 if network == 'testnet' else 16
 
     # Check length (This is important because the base58 library has problems
     # with long addresses (which are invalid anyway).
@@ -173,10 +173,10 @@ def create_superblock(proposals, event_block_height, budget_max, sb_epoch_time):
 
 
 # shims 'til we can fix the coind side
-def SHIM_serialise_for_coind(sentinel_hex):
+def SHIM_serialise_for_coind(oversight_hex):
     from models import COIND_GOVOBJ_TYPES
     # unpack
-    obj = deserialise(sentinel_hex)
+    obj = deserialise(oversight_hex)
 
     # shim for coind
     govtype = obj[0]
@@ -219,8 +219,8 @@ def SHIM_deserialise_from_coind(coind_hex):
         del obj[1]['type']
 
     # re-pack
-    sentinel_hex = serialise(obj)
-    return sentinel_hex
+    oversight_hex = serialise(obj)
+    return oversight_hex
 
 
 # convenience

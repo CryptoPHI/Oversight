@@ -82,7 +82,7 @@ celerybeat-schedule
 
 # virtualenv
 venv/
-sentinel1/
+OversightP/
 ENV/
 
 # Spyder project settings

@@ -198,7 +198,7 @@ class CoinDaemon():
         return self.govinfo['masternodewatchdogmaxseconds']
 
     @property
-    def SENTINEL_WATCHDOG_MAX_SECONDS(self):
+    def OVERSIGHT_WATCHDOG_MAX_SECONDS(self):
         return (self.MASTERNODE_WATCHDOG_MAX_SECONDS // 2)
 
     def estimate_block_time(self, height):

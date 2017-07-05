@@ -147,12 +147,12 @@ def main():
 
     # check coind connectivity
     if not is_coind_port_open(coind):
-        print("Cannot connect to coind. Please ensure coind is running and the JSONRPC port is open to Sentinel.")
+        print("Cannot connect to coind. Please ensure coind is running and the JSONRPC port is open to Oversight.")
         return
 
     # check coind sync
     if not coind.is_synced():
-        print("coind not synced with network! Awaiting full sync before running Sentinel.")
+        print("coind not synced with network! Awaiting full sync before running Oversight.")
         return
 
     # ensure valid masternode
@@ -160,7 +160,7 @@ def main():
         print("Invalid Masternode Status, cannot continue.")
         return
 
-    # register a handler if SENTINEL_DEBUG is set
+    # register a handler if OVERSIGHT_DEBUG is set
     if os.environ.get('OVERSIGHT_DEBUG', None):
         import logging
         logger = logging.getLogger('peewee')
@@ -205,7 +205,7 @@ def main():
 
 def signal_handler(signum, frame):
     print("Got a signal [%d], cleaning up..." % (signum))
-    Transient.delete('SENTINEL_RUNNING')
+    Transient.delete('OVERSIGHT_RUNNING')
     sys.exit(1)
 
 
@@ -228,14 +228,14 @@ if __name__ == '__main__':
     atexit.register(cleanup)
     signal.signal(signal.SIGINT, signal_handler)
 
-    # ensure another instance of Sentinel is not currently running
-    mutex_key = 'SENTINEL_RUNNING'
+    # ensure another instance of Oversight is not currently running
+    mutex_key = 'OVERSIGHT_RUNNING'
     # assume that all processes expire after 'timeout_seconds' seconds
     timeout_seconds = 90
 
     is_running = Transient.get(mutex_key)
     if is_running:
-        printdbg("An instance of Sentinel is already running -- aborting.")
+        printdbg("An instance of Oversight is already running -- aborting.")
         sys.exit(1)
     else:
         Transient.set(mutex_key, misc.now(), timeout_seconds)
