@@ -6,13 +6,13 @@ sys.path.append(os.path.normpath(os.path.join(os.path.dirname(__file__), '../../
 
 
 @pytest.fixture
-def valid_dash_address(network='mainnet'):
-    return 'yYe8KwyaUu5YswSYmB3q3ryx8XTUu9y7Ui' if (network == 'testnet') else 'XpjStRH8SgA6PjgebtPZqCa9y7hLXP767n'
+def valid_mue_address(network='mainnet'):
+    return 'GUjRxDnSG6RdKngLmt3F1m3nEsQTsFbkAH' if (network == 'testnet') else '7ZTAapSsrBaBHwpiuvEQ2EcS6dkrtqHNSt'
 
 
 @pytest.fixture
-def invalid_dash_address(network='mainnet'):
-    return 'yYe8KwyaUu5YswSYmB3q3ryx8XTUu9y7Uj' if (network == 'testnet') else 'XpjStRH8SgA6PjgebtPZqCa9y7hLXP767m'
+def invalid_mue_address(network='mainnet'):
+    return 'GUjRxDnSG6RdKngLmt3F1m3nEsQTsFbkAm' if (network == 'testnet') else '7ZTAapSsrBaBHwpiuvEQ2EcS6dkrtqHNSm'
 
 
 @pytest.fixture
@@ -64,8 +64,8 @@ def mn_status_bad():
 def test_valid_dash_address():
     from coinlib import is_valid_coin_address
 
-    main = valid_dash_address()
-    test = valid_dash_address('testnet')
+    main = valid_mue_address()
+    test = valid_mue_address('testnet')
 
     assert is_valid_coin_address(main) is True
     assert is_valid_coin_address(main, 'mainnet') is True
@@ -79,8 +79,8 @@ def test_valid_dash_address():
 def test_invalid_dash_address():
     from coinlib import is_valid_coin_address
 
-    main = invalid_dash_address()
-    test = invalid_dash_address('testnet')
+    main = invalid_mue_address()
+    test = invalid_mue_address('testnet')
 
     assert is_valid_coin_address(main) is False
     assert is_valid_coin_address(main, 'mainnet') is False
