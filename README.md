@@ -1,6 +1,6 @@
 # Oversight
 
-An all-powerful tool-set for MonetraryUnit
+An all-powerful tool-set for MonetaryUnit
 
 [![Build Status](https://travis-ci.org/muecoin/Oversight.svg?branch=master)](https://travis-ci.org/muecoin/Oversight)
 
