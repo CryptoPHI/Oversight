@@ -2,8 +2,8 @@
 
 An all-powerful tool-set for MonetaryUnit
 
-#* This CODE IS IN STAGING MODE.. Run it and you will loose your wallet *
-#* Until this notice is removed and a release is issued .. IT IS NOT SAFE OR SECURE FOR YOU TO USE THIS CODE *
+# This CODE IS IN STAGING MODE.. Run it and you will loose your wallet *
+# Until this notice is removed and a release is issued .. IT IS NOT SAFE OR SECURE FOR YOU TO USE THIS CODE *
 
 [![Build Status](https://travis-ci.org/muecoin/Oversight.svg?branch=master)](https://travis-ci.org/muecoin/Oversight)
 
