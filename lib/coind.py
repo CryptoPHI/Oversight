@@ -239,3 +239,11 @@ class CoinDaemon():
                 raise e
 
         return epoch
+
+    @property
+    def has_oversight_ping(self):
+        getinfo = self.rpc_command('getinfo')
+        return (getinfo['protocolversion'] >= config.min_coind_proto_version_with_oversight_ping)
+
+    def ping(self):
+        self.rpc_command('oversightping', config.oversigt_version)

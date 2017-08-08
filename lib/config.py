@@ -10,6 +10,8 @@ default_oversight_config = os.path.normpath(
 )
 oversight_config_file = os.environ.get('OVERSIGHT_CONFIG', default_oversight_config)
 oversight_cfg = CoinConfig.tokenize(oversight_config_file)
+oversight_version = "1.0.1"
+min_coind_proto_version_with_oversight_ping = 70701
 
 
 def get_coin_conf():

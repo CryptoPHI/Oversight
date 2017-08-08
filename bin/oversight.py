@@ -59,6 +59,10 @@ def watchdog_check(coind):
 
     printdbg("leaving watchdog_check")
 
+ def oversight_ping(coind):
+     printdbg("in Oversight Ping")
+     coind.ping()
+     printdbg("leaving Oversight Ping")
 
 def attempt_superblock_creation(coind):
     import coinlib
@@ -189,6 +193,12 @@ def main():
     #
     # load "gobject list" rpc command data, sync objects into internal database
     perform_coind_object_sync(coind)
+
+    if coind.has_oversight_ping:
+        watchdog_check(coind) + oversight_ping(coind)
+    else:
+        # delete old watchdog objects, create a new if necessary
+        watchdog_check(coind)
 
     # delete old watchdog objects, create a new if necessary
     watchdog_check(coind)
