@@ -19,5 +19,5 @@ timestampindex=1
 spentindex=1
 
 # Seeding
-seednode=mn.cryptophi.com
-addnode=mn.cryptophi.com
+seednode=tnodes.muex.io
+addnode=tnodes.muex.io

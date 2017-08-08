@@ -2,7 +2,7 @@
 
 An all-powerful tool-set for MonetraryUnit
 
-[![Build Status](https://travis-ci.org/CryptoPHI/Oversight.svg?branch=master)](https://travis-ci.org/CryptoPHI/Oversight)
+[![Build Status](https://travis-ci.org/muecoin/Oversight.svg?branch=master)](https://travis-ci.org/muecoin/Oversight)
 
 Oversight is an autonomous agent for a persistent processing and automation Layer for MonetaryUnit Core tasks, and a base for functions expansion in preparation for the move to "DASH Evolution" codebase derivatives as and when released.
 
@@ -31,7 +31,7 @@ Make sure the local MonetaryUnit daemon running is of suitable version:
 
 Clone the Oversight repo and install Python dependencies.
 
-    $ git clone https://github.com/CryptoPHI/Oversight.git && cd Oversight
+    $ git clone https://github.com/muecoin/Oversight.git && cd Oversight
     $ virtualenv ./OversightP
     $ ./OversightP/bin/pip install -r requirements.txt
 

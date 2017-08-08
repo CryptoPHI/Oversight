@@ -5,7 +5,7 @@ python:
   - "3.6"
 
 before_install:
-    - git clone https://github.com/CryptoPHI/Oversight.git
+    - git clone https://github.com/muecoin/Oversight.git
 
 install:
   - pip install -r requirements.txt
